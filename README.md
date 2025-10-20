@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: mysvc
 spec:
-  type: LoadBalancer
+  type: ClusterIp
   selector:
     app: swiggy
   ports:
@@ -34,8 +34,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: petapp-ingress
-  namespace: petapp
+  name: swiggy-ingress
+  namespace: swiggy
   annotations:
     kubernetes.io/ingress.class: ALB  # Use ALB Ingress class
     # alb.ingress.kubernetes.io/scheme: internet-facing  # Can be internal or internet-facing
