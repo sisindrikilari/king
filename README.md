@@ -1,31 +1,31 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: zomotoa  
+  name: myapp
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
-      app: zomoto
+      app: swiggy
   template:
     metadata:
       labels:
-        app: zomoto
+        app: swiggy
     spec:
       containers:
-      - name: Zomoto-1
-        image: sisi1234/zomota-project:latest
-        ports:
-        - containerPort: 3000
+        - name: cont-1
+          image: sisi1234/zomota-project:latest
+          ports:
+            - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: eks 
+  name: mysvc
 spec:
   type: LoadBalancer
-  ports:
-  - port: 3000
-    targetPort: 3000
   selector:
-    app: zomoto
+    app: swiggy
+  ports:
+    - port: 3000
+      targetPort: 3000
