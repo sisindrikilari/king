@@ -23,7 +23,7 @@ kind: Service
 metadata:
   name: eks 
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   ports:
   - port: 3000
     targetPort: 3000
