@@ -25,6 +25,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-  - port: 80
+  - port: 3000
+    targetPort: 3000
   selector:
     app: zomoto
