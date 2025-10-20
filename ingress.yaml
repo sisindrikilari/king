@@ -4,18 +4,20 @@ metadata:
   name: swiggy-ingress
   namespace: swiggy
   annotations:
-    kubernetes.io/ingress.class: ALB  # Use ALB Ingress class
-    # alb.ingress.kubernetes.io/scheme: internet-facing  # Can be internal or internet-facing
-    # alb.ingress.kubernetes.io/target-type: ip  # Use IP-based routing for ALB
-    # alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'  # Define ALB listener
+    alb.ingress.kubernetes.io/scheme: internet-facing    # or "internal"
+    alb.ingress.kubernetes.io/target-type: ip            # typical on EKS
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+    alb.ingress.kubernetes.io/healthcheck-path: /
 spec:
+  ingressClassName: alb
   rules:
     - http:
         paths:
-          - path: /  # Root path for accessing your service
+          - path: /
             pathType: Prefix
             backend:
               service:
-                name: mysvc  # Name of the Kubernetes service
+                name: mysvc
                 port:
                   number: 3000
+
