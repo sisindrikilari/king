@@ -16,7 +16,7 @@ spec:
       - name: Zomoto-1
         image: sisi1234/zomota-project:latest
         ports:
-        - containerPort: 80
+        - containerPort: 3000
 ---
 apiVersion: v1
 kind: Service
