@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dm-deployment
+spec:
+  replicas: 1 # You can change the number of replicas as needed
+  selector:
+    matchLabels:
+      app: dm  # This label should match the selector in the Service
+  template:
+    metadata:
+      labels:
+        app: dm  # This label should match the selector in the Service
+    spec:
+      containers:
+      - name: cont-2
+        image: sisi1234/dm:latest # You can specify a different version if needed
+        ports:
+        - containerPort: 80  
